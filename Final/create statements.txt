@@ -1,0 +1,43 @@
+CREATE TABLE `admin` (
+  `adminId` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`adminId`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `sku` (
+  `skuNo` int NOT NULL AUTO_INCREMENT,
+  `productName` varchar(45) DEFAULT NULL,
+  `productCategory` varchar(45) DEFAULT NULL,
+  `productPrice` decimal(4,2) DEFAULT NULL,
+  `stockLevel` int DEFAULT NULL,
+  `stockUpdateDate` date DEFAULT NULL,
+  PRIMARY KEY (`skuNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `txn` (
+  `txnId` int NOT NULL AUTO_INCREMENT,
+  `userId` int DEFAULT NULL,
+  PRIMARY KEY (`txnId`),
+  KEY `user_id_idx` (`userId`),
+  CONSTRAINT `user_id` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `txndetails` (
+  `txnDetailsId` int NOT NULL AUTO_INCREMENT,
+  `txnId` int DEFAULT NULL,
+  `skuNo` int DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  PRIMARY KEY (`txnDetailsId`),
+  KEY `txn_id_idx` (`txnId`),
+  KEY `product_id_idx` (`skuNo`),
+  CONSTRAINT `product_id` FOREIGN KEY (`skuNo`) REFERENCES `sku` (`skuNo`),
+  CONSTRAINT `txn_id` FOREIGN KEY (`txnId`) REFERENCES `txn` (`txnId`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `user` (
+  `userId` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  `phNo` int DEFAULT NULL,
+  PRIMARY KEY (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

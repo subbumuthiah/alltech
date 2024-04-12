@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+
+    <changeSet id="1712880828799-1" author="subbum (generated)">
+        <createTable tableName="admin">
+            <column autoIncrement="true" name="adminId" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PRIMARY"/>
+            </column>
+            <column name="userName" type="VARCHAR(45)"/>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="email" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1712880828799-2" author="subbum (generated)">
+        <createTable tableName="sku">
+            <column autoIncrement="true" name="skuNo" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PRIMARY"/>
+            </column>
+            <column name="productName" type="VARCHAR(45)"/>
+            <column name="productCategory" type="VARCHAR(45)"/>
+            <column name="productPrice" type="DECIMAL(4, 2)"/>
+            <column name="stockLevel" type="INT"/>
+            <column name="stockUpdateDate" type="date"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1712880828799-3" author="subbum (generated)">
+        <createTable tableName="txn">
+            <column autoIncrement="true" name="txnId" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PRIMARY"/>
+            </column>
+            <column name="userId" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1712880828799-4" author="subbum (generated)">
+        <createTable tableName="txndetails">
+            <column autoIncrement="true" name="txnDetailsId" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PRIMARY"/>
+            </column>
+            <column name="txnId" type="INT"/>
+            <column name="skuNo" type="INT"/>
+            <column name="quantity" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1712880828799-5" author="subbum (generated)">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="userId" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PRIMARY"/>
+            </column>
+            <column name="userName" type="VARCHAR(45)"/>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="email" type="VARCHAR(45)"/>
+            <column name="address" type="VARCHAR(45)"/>
+            <column name="phNo" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1712880828799-9" author="subbum (generated)">
+        <addForeignKeyConstraint baseColumnNames="skuNo" baseTableName="txndetails" constraintName="product_id"
+                                 onDelete="NO ACTION" referencedColumnNames="skuNo" referencedTableName="sku"/>
+
+        <createIndex indexName="product_id_idx" tableName="txndetails">
+            <column name="skuNo"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1712880828799-10" author="subbum (generated)">
+        <addForeignKeyConstraint baseColumnNames="txnId" baseTableName="txndetails" constraintName="txn_id"
+                                 onDelete="NO ACTION" referencedColumnNames="txnId" referencedTableName="txn"/>
+
+        <createIndex indexName="txn_id_idx" tableName="txndetails">
+            <column name="txnId"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1712880828799-11" author="subbum (generated)">
+        <addForeignKeyConstraint baseColumnNames="userId" baseTableName="txn" constraintName="user_id"
+                                 onDelete="NO ACTION" referencedColumnNames="userId" referencedTableName="user"/>
+
+        <createIndex indexName="user_id_idx" tableName="txn">
+            <column name="userId"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

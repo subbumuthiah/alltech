@@ -9,7 +9,11 @@ import com.sku.entity.Sku;
 import com.sku.repository.SkuRepository;
 import com.sku.request.CreateSkuRequest;
 import com.sku.response.SkuResponse;
-import com.sku.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+//import com.sku.*;
 @Service
 public class SkuService {
 
@@ -44,5 +48,9 @@ public class SkuService {
 		logger.info("Inside getById " + id);
 		Sku sku = skuRepository.findById(id).get();
 		return new SkuResponse(sku);
+	}
+
+	public List<SkuResponse> getAll(){
+		return skuRepository.findAll().stream().map(SkuResponse::new).collect(Collectors.toList());
 	}
 }

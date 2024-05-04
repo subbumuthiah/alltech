@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="admin-micro" />
+        <module name="txn-micro" />
+        <module name="txndetail-micro" />
+        <module name="serve" />
+        <module name="sku-micro" />
+        <module name="user-micro" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin-micro" options="-parameters" />
+      <module name="serve" options="-parameters" />
+      <module name="sku-micro" options="-parameters" />
+      <module name="txn-micro" options="-parameters" />
+      <module name="txndetail-micro" options="-parameters" />
+      <module name="user-micro" options="-parameters" />
+    </option>
+  </component>
+</project>

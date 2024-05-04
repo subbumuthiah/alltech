@@ -16,7 +16,7 @@ import com.txn.response.TxnResponse;
 import com.txn.service.TxnService;
 
 @RestController
-@RequestMapping("/api/transactions")
+@RequestMapping("/api/txn")
 public class TxnController {
 
 	@Autowired

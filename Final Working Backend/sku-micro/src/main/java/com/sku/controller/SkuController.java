@@ -12,6 +12,8 @@ import com.sku.request.CreateSkuRequest;
 import com.sku.response.SkuResponse;
 import com.sku.service.SkuService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/sku")
 public class SkuController {
@@ -28,4 +30,11 @@ public class SkuController {
 	public SkuResponse getById(@PathVariable int id) {
 		return skuService.getById(id);
 	}
+
+	@GetMapping("/getAll")
+	public List<SkuResponse> getAll(){
+		return skuService.getAll();
+	}
+
+//	public SkuResponse
 }

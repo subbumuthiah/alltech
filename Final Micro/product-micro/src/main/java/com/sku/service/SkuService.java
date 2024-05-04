@@ -9,7 +9,7 @@ import com.sku.entity.Sku;
 import com.sku.repository.SkuRepository;
 import com.sku.request.CreateSkuRequest;
 import com.sku.response.SkuResponse;
-import com.sku.*;
+//import com.sku.*;
 @Service
 public class SkuService {
 

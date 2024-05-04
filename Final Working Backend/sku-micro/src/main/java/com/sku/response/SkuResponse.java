@@ -93,6 +93,7 @@ public class SkuResponse {
 		  this.product_category = sku.getProduct_category();
 		  this.product_price = sku.getProduct_price();
 		  this.stock_level = sku.getStock_level();
+		  this.stock_update_date = sku.getStock_update_date();
 	  }
 	  
 	  public Integer getSku_no() {

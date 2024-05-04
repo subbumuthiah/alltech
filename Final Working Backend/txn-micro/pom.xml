@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.transactions</groupId>
-	<artifactId>transactions-micro</artifactId>
+	<artifactId>txn-micro</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>transactions-micro</name>
 	<description>Demo project for Spring Boot</description>

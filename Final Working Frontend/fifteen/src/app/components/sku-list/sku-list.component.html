@@ -1,0 +1,10 @@
+<p>sku-list works!</p>
+<div class="sku-grid">
+  <div *ngFor="let sku of skus" class="sku-item">
+    <h3>{{ sku.product_name }}</h3>
+    <p>Category: {{ sku.product_category }}</p>
+    <p>Price: {{ sku.product_price | currency }}</p>
+    <p>Stock: {{ sku.stock_level }}</p>
+    <p>Last Update: {{ sku.stock_update_date | date:'mediumDate' }}</p>
+  </div>
+</div>
